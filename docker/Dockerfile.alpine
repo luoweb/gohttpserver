@@ -1,5 +1,6 @@
-FROM golang:1.16.0-alpine as build
+FROM golang:alpine as build
 
+ENV GOPROXY="https://goproxy.io"
 WORKDIR /app
 COPY go.mod .
 COPY go.sum .
