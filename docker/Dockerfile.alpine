@@ -10,6 +10,7 @@ RUN apk add upx --no-cache
 
 # Build app and pack using upx
 ADD . /app
+RUN go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w -X main.VERSION=docker' -o gohttpserver && upx gohttpserver
 
 FROM alpine:3
